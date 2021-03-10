@@ -102,7 +102,7 @@ func (c Client) GetObject(ctx context.Context, bucketName, objectName string, op
 							resCh <- getResponse{Error: err}
 							return
 						}
-						etag = objectInfo.ETag
+						// etag = objectInfo.ETag
 						// Read at least firstReq.Buffer bytes, if not we have
 						// reached our EOF.
 						size, err := readFull(httpReader, req.Buffer)
@@ -147,7 +147,7 @@ func (c Client) GetObject(ctx context.Context, bucketName, objectName string, op
 							// Exit the go-routine.
 							return
 						}
-						etag = objectInfo.ETag
+						// etag = objectInfo.ETag
 						// Send back the first response.
 						resCh <- getResponse{
 							objectInfo: objectInfo,
